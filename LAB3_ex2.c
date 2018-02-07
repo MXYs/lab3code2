@@ -51,9 +51,9 @@ int sampling_freq = 8000;
 /* Audio port configuration settings: these values set registers in the AIC23 audio
    interface to configure it. See TI doc SLWS106D 3-3 to 3-10 for more info. */
 DSK6713_AIC23_Config Config = { \
-			 /**********************************************************************/
-			 /*   REGISTER	            FUNCTION			      SETTINGS         */
-			 /**********************************************************************/\
+		/**********************************************************************/
+		/*   REGISTER	            FUNCTION			      SETTINGS */
+		/**********************************************************************/\
     0x0017,  /* 0 LEFTINVOL  Left line input channel volume  0dB                   */\
     0x0017,  /* 1 RIGHTINVOL Right line input channel volume 0dB                   */\
     0x01f9,  /* 2 LEFTHPVOL  Left channel headphone volume   0dB                   */\
@@ -87,8 +87,7 @@ void main(){
   init_HWI();
   sineinit();
 
-  /* loop indefinitely, waiting for interrupts */
-  while(1)
+  /* loop indefinitely, waiting for interrupts */  while(1)
   {};
 
 }
@@ -123,10 +122,10 @@ void init_hardware()
 void init_HWI(void)
 {
 	IRQ_globalDisable();			// Globally disables interrupts
-	IRQ_nmiEnable();				// Enables the NMI interrupt (used by the debugger)
+	IRQ_nmiEnable();			// Enables the NMI interrupt (used by the debugger)
 	IRQ_map(IRQ_EVT_XINT1,4);		// Maps an event to a physical interrupt (X for transmit, Ex2: R for recieve, Ex1)
 	IRQ_enable(IRQ_EVT_XINT1);		// Enables the event (X for transmit, Ex2: R for recieve, Ex1)
-	IRQ_globalEnable();				// Globally enables interrupts
+	IRQ_globalEnable();			// Globally enables interrupts
 
 }
 
